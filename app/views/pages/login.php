@@ -7,9 +7,9 @@ require APPROOT .'/views/inc/navbar.php';
 
             <div class="w-full space-y-5 md:w-3/5 md:pr-16">
                 <h2 class="text-2xl font-extrabold leading-none text-black sm:text-3xl md:text-5xl">
-                Welcome to our <br> Wiki platform
+                Welcome to our Wiki platform
                 </h2>
-                <p class="text-xl text-gray-600 md:pr-16">Log in to access your account and start contributing.</p>
+                <img src="https://cdn.devdojo.com/images/september2020/grow-together.png" alt="img">
             </div>
 
             <div class="w-full mt-16 md:mt-0 md:w-2/5">

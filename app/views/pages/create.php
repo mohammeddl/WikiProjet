@@ -7,7 +7,7 @@ require APPROOT . '/views/inc/navbar.php';
 <section class="relative bg-white  ">
     <div class="flex flex-col  items-center justify-between px-10 mx-auto max-w-7xl xl:px-5 lg:flex-row ">
 
-        <div class="flex h-[90vh] flex-col items-center w-full px-10 pt-5 pb-20 lg:pt-20 lg:flex-row">
+        <div class="flex h-[96vh] flex-col items-center w-full px-10 pt-5 pb-20 lg:pt-20 lg:flex-row">
             <div class="relative w-full max-w-md bg-cover lg:max-w-2xl lg:w-7/12">
                 <div class="relative flex flex-col items-center justify-center w-full h-full lg:pr-10">
                     <img src="https://cdn.devdojo.com/images/january2021/hero-character.png">
@@ -18,6 +18,11 @@ require APPROOT . '/views/inc/navbar.php';
                 <div class="relative z-10 flex flex-col items-start justify-start p-10 bg-white shadow-2xl rounded-xl">
                     <h4 class="w-full font-serif text-3xl font-medium leading-snug">Join our Wiki by creating<br> your account now !</h4>
                     <form id="create" class="relative w-full mt-6 space-y-8">
+                        <div class="relative">
+                            <label for="image" class="absolute px-2 ml-2 -mt-3 font-medium text-gray-600 ">Image</label>
+
+                            <input type="file" class="block w-full px-3 py-2 mt-2 text-sm text-gray-600 bg-white border border-gray-200 rounded-lg file:bg-gray-200 file:text-gray-700 file:text-sm file:px-4 file:py-1 file:border-none file:rounded-full dark:file:bg-gray-800 dark:file:text-gray-200 dark:text-gray-300 placeholder-gray-400/70 dark:placeholder-gray-500 focus:border-blue-400 focus:outline-none focus:ring focus:ring-blue-300 focus:ring-opacity-40 dark:border-gray-600 dark:bg-gray-900 dark:focus:border-blue-300" />
+                        </div>
                         <div class="relative">
                             <label class="absolute px-2 ml-2 -mt-3 font-medium text-gray-600 bg-white">Name</label>
                             <input type="text" id="name" class="block w-full px-4 py-4 mt-2 text-base placeholder-gray-400 bg-white border border-gray-300 rounded-md focus:outline-none focus:border-black" placeholder="mohammed">
@@ -36,7 +41,7 @@ require APPROOT . '/views/inc/navbar.php';
                             <button type="submit" name="" class="inline-block w-full px-5 py-4 text-xl font-medium text-center text-white transition duration-200 bg-yellow-400 rounded-lg hover:bg-yellow-300 ease">Submit</button>
 
                         </div>
-</form>
+                    </form>
 
                 </div>
                 <svg class="absolute top-0 left-0 z-0 w-32 h-32 -mt-12 -ml-12 text-gray-200 fill-current" viewBox="0 0 91 91" xmlns="http://www.w3.org/2000/svg">

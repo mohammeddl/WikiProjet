@@ -26,4 +26,9 @@
       $this->view('pages/member');
     }
 
+    public function dashboard(){
+
+      $this->view('pages/dashboard');
+    }
+
   }
