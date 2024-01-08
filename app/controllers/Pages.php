@@ -22,4 +22,8 @@
       $this->view('pages/login');
     }
 
+    public function member(){
+      $this->view('pages/member');
+    }
+
   }
