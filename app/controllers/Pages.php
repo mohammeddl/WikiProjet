@@ -12,11 +12,14 @@
       $this->view('pages/index', $data);
     }
 
-    public function about(){
-      $data = [
-        'title' => 'About Us'
-      ];
+    public function create(){
 
-      $this->view('pages/about', $data);
+      $this->view('pages/create');
     }
+
+    public function login(){
+
+      $this->view('pages/login');
+    }
+
   }
