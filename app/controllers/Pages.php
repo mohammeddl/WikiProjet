@@ -26,9 +26,12 @@
       $this->view('pages/member');
     }
 
-    public function dashboard(){
+    public function categorie(){
 
-      $this->view('pages/dashboard');
+      $this->view('pages/categorie');
     }
 
+    public function tagas(){
+      $this->view('pages/tagas');
+    }
   }
