@@ -138,7 +138,7 @@
                 </div>
             </div>
         </div>
-        <div class="flex flex-col min-w-0 flex-1 overflow-hidden">
+        <div class="flex flex-col min-w-0 flex-1 ">
             <div class="lg:hidden">
                 <div class="flex items-center justify-between bg-gray-50 border-b border-gray-200 px-4 py-1.5">
                     <div>
@@ -153,19 +153,32 @@
                     </div>
                 </div>
             </div>
-            <section class="max-w-4xl p-24 mx-auto m-16 bg-yellow-50 rounded-md shadow-md dark:bg-gray-800">
+            <section class="max-w-4xl p-14 mx-auto my-16 bg-yellow-50 rounded-md shadow-md dark:bg-gray-800">
                 <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Add Category</h2>
 
                 <form>
-                    <div class="grid grid-cols-1 gap-6 mt-4 sm:grid-cols-2">
+                    <div class="grid grid-cols-1 gap-6 mt-4">
+                        <div>
+                            <label for="dropzone-file" class="flex flex-col items-center w-full max-w-lg p-5 mx-auto mt-2 text-center bg-white border-2 border-gray-300 border-dashed cursor-pointer dark:bg-gray-900 dark:border-gray-700 rounded-xl">
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-500 dark:text-gray-400">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+                                </svg>
+
+                                <h2 class="mt-1 font-medium tracking-wide text-gray-700 dark:text-gray-200">img </h2>
+
+                                <p class="mt-2 text-xs tracking-wide text-gray-500 dark:text-gray-400">Upload or darg & drop your file SVG, PNG, JPG or GIF. </p>
+
+                                <input id="dropzone-file" type="file" class="hidden" />
+                            </label>
+                        </div>
 
                         <div>
-                            <label class="text-gray-700 dark:text-gray-200" >Name</label>
+                            <label class="text-gray-700 dark:text-gray-200">Name</label>
                             <input id="name" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
                         </div>
 
                         <div>
-                            <label class="text-gray-700 dark:text-gray-200" >Date</label>
+                            <label class="text-gray-700 dark:text-gray-200">Date</label>
                             <input id="date" type="date" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
                         </div>
                     </div>
@@ -179,44 +192,13 @@
                 <h2 class="text-gray-500 text-xs font-medium uppercase tracking-wide">Categorys</h2>
                 <ul role="list" class="mt-3 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
 
-                    <li class="col-span-1 flex shadow-sm rounded-md">
-                        <div class="flex-shrink-0 flex items-center justify-center w-16 bg-yellow-500 text-white text-sm font-medium rounded-l-md">
-                            T
-                        </div>
-                        <div class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
-                            <div class="flex-1 px-4 py-2 text-sm truncate">
-                                <a href="#" class="text-gray-900 font-medium hover:text-gray-600">Templates</a>
-                            </div>
-                            <div class="flex-shrink-0 pr-2">
-                                <button type="button" class="w-8 h-8 bg-white inline-flex items-center justify-center text-gray-400 rounded-full bg-transparent hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                    <span class="sr-only">Open options</span>
-                                    <svg class="w-5 h-5" x-description="Heroicon name: solid/dots-vertical" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path>
-                                    </svg>
-                                </button>
-                            </div>
-                        </div>
-                    </li>
-
-                    <li class="col-span-1 flex shadow-sm rounded-md">
-                        <div class="flex-shrink-0 flex items-center justify-center w-16 bg-green-500 text-white text-sm font-medium rounded-l-md">
-                            RC
-                        </div>
-                        <div class="flex-1 flex items-center justify-between border-t border-r border-b border-gray-200 bg-white rounded-r-md truncate">
-                            <div class="flex-1 px-4 py-2 text-sm truncate">
-                                <a href="#" class="text-gray-900 font-medium hover:text-gray-600">React Components</a>
-                            </div>
-                            <div class="flex-shrink-0 pr-2">
-                                <button type="button" class="w-8 h-8 bg-white inline-flex items-center justify-center text-gray-400 rounded-full bg-transparent hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
-                                    <span class="sr-only">Open options</span>
-                                    <svg class="w-5 h-5" x-description="Heroicon name: solid/dots-vertical" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 20 20" fill="currentColor" aria-hidden="true">
-                                        <path d="M10 6a2 2 0 110-4 2 2 0 010 4zM10 12a2 2 0 110-4 2 2 0 010 4zM10 18a2 2 0 110-4 2 2 0 010 4z"></path>
-                                    </svg>
-                                </button>
-                            </div>
+                    <li class="w-full max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+                        <img class="object-cover w-full h-56" src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="avatar">
+                        <div class="py-5 text-center">
+                            <a href="#" class="block text-xl font-bold text-gray-800 dark:text-white" tabindex="0" role="link">John Doe</a>
                         </div>
                     </li>
                 </ul>
             </div>
-        </div>
-        <?php require APPROOT . '/views/inc/footer.php'; ?>
+
+            <?php require APPROOT . '/views/inc/footer.php'; ?>

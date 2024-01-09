@@ -20,7 +20,7 @@ require APPROOT .'/views/inc/navbar.php';
                     <div class="block">
                         <button class="inline-block w-full px-5 py-4 text-xl font-medium text-center text-white transition duration-200 bg-yellow-400 rounded-lg hover:bg-yellow-300 ease">Log In</button>
                     </div>
-                    <p class="w-full mt-4 text-sm text-center text-gray-500">Don't have an account? <a href="#_" class="text-yellow-400 underline">Sign up here</a></p>
+                    <p class="w-full mt-4 text-sm text-center text-gray-500">Don't have an account? <a href="<?php URLROOT ;?>/users/login" class="text-yellow-400 underline">Sign up here</a></p>
                 </div>
             </div>
 
