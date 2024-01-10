@@ -57,4 +57,19 @@ class User
             return false;
         }
     }
+
+    public function insertTags($tag)
+    {
+        $this->db->query("INSERT INTO tags (tagName) VALUES (:tag)");
+        $this->db->bind(':tag', $tag);
+        $this->db->execute();
+    }
+
+    public function getTags()
+{
+    $this->db->query("SELECT * FROM tags");
+    
+    return $this->db->resultSet();
+}
+
 }

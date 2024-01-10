@@ -6,6 +6,7 @@ class Users extends Controller
     {
         $this->userModel = $this->model('User');
     }
+    
 
     public function register()
     {
@@ -63,8 +64,6 @@ class Users extends Controller
         }
     }
 
-
-
     public function login()
     {
         if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -90,7 +89,6 @@ class Users extends Controller
             }
         }
     }
-
 
     public function createUserSession($user)
     {
@@ -120,4 +118,21 @@ class Users extends Controller
             return false;
         }
     }
+
+    public function tags()
+    {
+        $tag = $_POST['tagName'];
+        $result = $this->userModel->insertTags($tag);
+        
+            $this->view('pages/tags');
+        
+    }
+
+
+    public function displayTags()
+{
+    $tags = $this->userModel->getTags();
+   
+    $this->view('pages/tags', $tags);
+}
 }

@@ -1,8 +1,11 @@
 <?php
 class Pages extends Controller
 {
+
+
   public function __construct()
   {
+
   }
 
   public function index()
@@ -34,6 +37,7 @@ class Pages extends Controller
 
   public function tags()
   {
+
     $this->view('pages/tags');
   }
   public function dashboard()
