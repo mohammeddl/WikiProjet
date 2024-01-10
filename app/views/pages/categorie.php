@@ -42,7 +42,7 @@ require APPROOT . '/views/inc/navadmin.php';
                                 Categories
                             </a>
 
-                            <a href="<?php echo URLROOT; ?>pages/tags" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md" x-state-description="undefined: &quot;bg-gray-100 text-gray-900&quot;, undefined: &quot;text-gray-600 hover:bg-gray-50 hover:text-gray-900&quot;">
+                            <a href="<?php echo URLROOT; ?>users/displayTags" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md" x-state-description="undefined: &quot;bg-gray-100 text-gray-900&quot;, undefined: &quot;text-gray-600 hover:bg-gray-50 hover:text-gray-900&quot;">
                                 <svg class="text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6" xmlns="http://www.w3.org/2000/svg" height="16" width="18" viewBox="0 0 576 512">
                                     <path fill="#6b6b6b" d="M304 240V16.6c0-9 7-16.6 16-16.6C443.7 0 544 100.3 544 224c0 9-7.6 16-16.6 16H304zM32 272C32 150.7 122.1 50.3 239 34.3c9.2-1.3 17 6.1 17 15.4V288L412.5 444.5c6.7 6.7 6.2 17.7-1.5 23.1C371.8 495.6 323.8 512 272 512C139.5 512 32 404.6 32 272zm526.4 16c9.3 0 16.6 7.8 15.4 17c-7.7 55.9-34.6 105.6-73.9 142.3c-6 5.6-15.4 5.2-21.2-.7L320 288H558.4z" />
                                 </svg>
@@ -94,7 +94,7 @@ require APPROOT . '/views/inc/navadmin.php';
                                     </svg>
                                     Categories
 
-                                    <a href="<?php echo URLROOT; ?>pages/tags" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md" x-state-description="undefined: &quot;bg-gray-200 text-gray-900&quot;, undefined: &quot;text-gray-600 hover:bg-gray-50 hover:text-gray-900&quot;">
+                                    <a href="<?php echo URLROOT; ?>users/displayTags" class="text-gray-600 hover:bg-gray-50 hover:text-gray-900 group flex items-center px-2 py-2 text-sm font-medium rounded-md" x-state-description="undefined: &quot;bg-gray-200 text-gray-900&quot;, undefined: &quot;text-gray-600 hover:bg-gray-50 hover:text-gray-900&quot;">
                                         <svg class="text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" height="16" width="18" viewBox="0 0 576 512">
                                             <path fill="#6b6b6b" d="M304 240V16.6c0-9 7-16.6 16-16.6C443.7 0 544 100.3 544 224c0 9-7.6 16-16.6 16H304zM32 272C32 150.7 122.1 50.3 239 34.3c9.2-1.3 17 6.1 17 15.4V288L412.5 444.5c6.7 6.7 6.2 17.7-1.5 23.1C371.8 495.6 323.8 512 272 512C139.5 512 32 404.6 32 272zm526.4 16c9.3 0 16.6 7.8 15.4 17c-7.7 55.9-34.6 105.6-73.9 142.3c-6 5.6-15.4 5.2-21.2-.7L320 288H558.4z" />
                                         </svg>
@@ -139,7 +139,7 @@ require APPROOT . '/views/inc/navadmin.php';
             <section class="max-w-4xl p-14 mx-auto my-16 bg-yellow-50 rounded-md shadow-md dark:bg-gray-800">
                 <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Add Category</h2>
 
-                <form action="<?php echo URLROOT;?>users/categorie" method="post">
+                <form action="<?php echo URLROOT; ?>users/categorie" method="post">
                     <div class="grid grid-cols-1 gap-6 mt-4">
                         <div>
                             <label for="dropzone-file" class="flex flex-col items-center w-full max-w-lg p-5 mx-auto mt-2 text-center bg-white border-2 border-gray-300 border-dashed cursor-pointer dark:bg-gray-900 dark:border-gray-700 rounded-xl">
@@ -169,13 +169,13 @@ require APPROOT . '/views/inc/navadmin.php';
             <div class="p-14 ">
                 <h2 class="text-gray-500 text-xs font-medium uppercase tracking-wide">Categorys</h2>
                 <ul role="list" class="mt-3 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
-<?php foreach($data as $category){ ?>
-                    <li class="w-full max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-                        <img class="object-cover w-full h-56" src="<?= URLROOT?>/img/<?= $category->categoryImg ?>" alt="avatar">
-                        <div class="py-5 text-center">
-                            <a href="#" class="block text-xl font-bold text-gray-800 dark:text-white" tabindex="0" role="link"><?= $category->categoryName ?></a>
-                        </div>
-                    </li>
+                    <?php foreach ($data as $category) { ?>
+                        <li class="w-full max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
+                            <img class="object-cover w-full h-56" src="<?= URLROOT ?>/img/<?= $category->categoryImg ?>" alt="avatar">
+                            <div class="py-5 text-center">
+                                <a href="#" class="block text-xl font-bold text-gray-800 dark:text-white" tabindex="0" role="link"><?= $category->categoryName ?></a>
+                            </div>
+                        </li>
                     <?php } ?>
                 </ul>
             </div>
