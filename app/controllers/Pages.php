@@ -32,9 +32,9 @@ class Pages extends Controller
     $this->view('pages/categorie');
   }
 
-  public function tagas()
+  public function tags()
   {
-    $this->view('pages/tagas');
+    $this->view('pages/tags');
   }
   public function dashboard()
   {

@@ -9,7 +9,7 @@ require APPROOT .'/views/inc/navbar.php';
                 <h2 class="text-2xl font-extrabold leading-none text-black sm:text-3xl md:text-5xl">
                 Welcome to our Wiki platform
                 </h2>
-                <?php flash('regiser_success');?>
+                
                 <img src="https://cdn.devdojo.com/images/september2020/grow-together.png" alt="img">
             </div>
 
@@ -23,7 +23,7 @@ require APPROOT .'/views/inc/navbar.php';
                         <button type="submit" name="submitLogin" class="inline-block w-full px-5 py-4 text-xl font-medium text-center text-white transition duration-200 bg-yellow-400 rounded-lg hover:bg-yellow-300 ease">Log In</button>
                     </div>
                 </form>
-                    <p class="w-full mt-4 text-sm text-center text-gray-500">Don't have an account? <a href="<?php URLROOT ;?>/users/login" class="text-yellow-400 underline">Sign up here</a></p>
+                    <p class="w-full mt-4 text-sm text-center text-gray-500">Don't have an account? <a href="<?php echo URLROOT ;?>/users/register" class="text-yellow-400 underline">Sign up here</a></p>
                 </div>
             </div>
 

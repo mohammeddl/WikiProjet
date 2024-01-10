@@ -44,7 +44,7 @@ require APPROOT . '/views/inc/navbar.php';
                         </div>
                         <div class="relative">
                             <button type="submit" name="submitLogin" class="inline-block w-full px-5 py-2 text-xl font-medium text-center text-white transition duration-200 bg-yellow-400 rounded-lg hover:bg-yellow-300 ease">Submit</button>
-                            <p class="w-full mt-4 text-sm text-center text-gray-500">I have an account <a href="<?php echo URLROOT; ?>users/register" class="text-yellow-400 underline">Login here</a></p>
+                            <p class="w-full mt-4 text-sm text-center text-gray-500">I have an account <a href="<?php echo URLROOT; ?>pages/login" class="text-yellow-400 underline">Login here</a></p>
                         </div>
                     </form>
 

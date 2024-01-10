@@ -75,16 +75,22 @@ class Users extends Controller
             $loggedUser = $this->userModel->login($data['email'], $data['password']);
             if ($loggedUser) {
                 $this->createUserSession($loggedUser);
+                switch ($_SESSION['role']) {
+                    case "author":
+                        $_SESSION['role'] = 'author';
+                        $this->view('pages/login');
+                        exit;
+                    case "admin":
+                        $_SESSION['role'] = 'admin';
+                        $this->view('pages/dashboard');
+                        exit;
+                }
+            } else {
+                $this->view('pages/login');
             }
-        } else {
-            $data = [
-                'email' => '',
-                'password' => '',
-            ];
-
-            $this->view('pages/login');
         }
     }
+
 
     public function createUserSession($user)
     {
@@ -92,22 +98,25 @@ class Users extends Controller
         $_SESSION['name'] = $user->name;
         $_SESSION['email'] = $user->email;
         $_SESSION['img'] = $user->img;
-        redirect('pages/member');
+        $_SESSION['role'] = $user->role;
     }
 
-    public function logout(){
+    public function logout()
+    {
         unset($_SESSION['id']);
         unset($_SESSION['name']);
         unset($_SESSION['email']);
         unset($_SESSION['img']);
+        unset($_SESSION['admin']);
         session_destroy();
         redirect('pages/login');
     }
 
-    public function isLogeIN(){
-        if(isset($_SESSION['id'])){
+    public function isLogeIN()
+    {
+        if (isset($_SESSION['id'])) {
             return true;
-        }else{
+        } else {
             return false;
         }
     }
