@@ -135,4 +135,17 @@ class Users extends Controller
    
     $this->view('pages/tags', $tags);
 }
+
+
+public function categorie(){
+    $img = $_POST['img'];
+    $name = $_POST['name'];
+    $this->userModel->insertCategory($name, $img);
+    $this->view('pages/categorie');
+}
+
+public function displayCategory(){
+    $category = $this->userModel->getCategory();
+    $this->view('pages/categorie', $category);
+}
 }

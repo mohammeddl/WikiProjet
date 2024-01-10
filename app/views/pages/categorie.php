@@ -139,7 +139,7 @@ require APPROOT . '/views/inc/navadmin.php';
             <section class="max-w-4xl p-14 mx-auto my-16 bg-yellow-50 rounded-md shadow-md dark:bg-gray-800">
                 <h2 class="text-lg font-semibold text-gray-700 capitalize dark:text-white">Add Category</h2>
 
-                <form>
+                <form action="<?php echo URLROOT;?>users/categorie" method="post">
                     <div class="grid grid-cols-1 gap-6 mt-4">
                         <div>
                             <label for="dropzone-file" class="flex flex-col items-center w-full max-w-lg p-5 mx-auto mt-2 text-center bg-white border-2 border-gray-300 border-dashed cursor-pointer dark:bg-gray-900 dark:border-gray-700 rounded-xl">
@@ -151,18 +151,13 @@ require APPROOT . '/views/inc/navadmin.php';
 
                                 <p class="mt-2 text-xs tracking-wide text-gray-500 dark:text-gray-400">Upload or darg & drop your file SVG, PNG, JPG or GIF. </p>
 
-                                <input id="dropzone-file" type="file" class="hidden" />
+                                <input id="dropzone-file" name="img" type="file" class="hidden" />
                             </label>
                         </div>
 
                         <div>
                             <label class="text-gray-700 dark:text-gray-200">Name</label>
-                            <input id="name" type="text" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
-                        </div>
-
-                        <div>
-                            <label class="text-gray-700 dark:text-gray-200">Date</label>
-                            <input id="date" type="date" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
+                            <input id="name" type="text" name="name" class="block w-full px-4 py-2 mt-2 text-gray-700 bg-white border border-gray-200 rounded-md dark:bg-gray-800 dark:text-gray-300 dark:border-gray-600 focus:border-blue-400 focus:ring-blue-300 focus:ring-opacity-40 dark:focus:border-blue-300 focus:outline-none focus:ring">
                         </div>
                     </div>
 
@@ -174,13 +169,14 @@ require APPROOT . '/views/inc/navadmin.php';
             <div class="p-14 ">
                 <h2 class="text-gray-500 text-xs font-medium uppercase tracking-wide">Categorys</h2>
                 <ul role="list" class="mt-3 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
-
+<?php foreach($data as $category){ ?>
                     <li class="w-full max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-                        <img class="object-cover w-full h-56" src="https://images.unsplash.com/photo-1542156822-6924d1a71ace?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=500&q=60" alt="avatar">
+                        <img class="object-cover w-full h-56" src="<?= URLROOT?>/img/<?= $category->categoryImg ?>" alt="avatar">
                         <div class="py-5 text-center">
-                            <a href="#" class="block text-xl font-bold text-gray-800 dark:text-white" tabindex="0" role="link">John Doe</a>
+                            <a href="#" class="block text-xl font-bold text-gray-800 dark:text-white" tabindex="0" role="link"><?= $category->categoryName ?></a>
                         </div>
                     </li>
+                    <?php } ?>
                 </ul>
             </div>
 
