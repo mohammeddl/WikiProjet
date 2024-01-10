@@ -75,7 +75,6 @@ class Users extends Controller
             $loggedUser = $this->userModel->login($data['email'], $data['password']);
             if ($loggedUser) {
                 $this->createUserSession($loggedUser);
-                $this->view('pages/member');
             }
         } else {
             $data = [
@@ -89,10 +88,27 @@ class Users extends Controller
 
     public function createUserSession($user)
     {
-        $_SESSION['user_id'] = $user->id;
+        $_SESSION['id'] = $user->id;
         $_SESSION['name'] = $user->name;
         $_SESSION['email'] = $user->email;
         $_SESSION['img'] = $user->img;
         redirect('pages/member');
+    }
+
+    public function logout(){
+        unset($_SESSION['id']);
+        unset($_SESSION['name']);
+        unset($_SESSION['email']);
+        unset($_SESSION['img']);
+        session_destroy();
+        redirect('pages/login');
+    }
+
+    public function isLogeIN(){
+        if(isset($_SESSION['id'])){
+            return true;
+        }else{
+            return false;
+        }
     }
 }
