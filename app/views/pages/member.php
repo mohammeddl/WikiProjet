@@ -1,7 +1,8 @@
 <?php require APPROOT . '/views/inc/header.php';
+require APPROOT . '/views/inc/navbar.php';
 ?>
 
-<section class="relative py-2 bg-yellow-400">
+<!-- <section class="relative py-2 bg-yellow-400">
     <div class="flex items-center justify-between h-14 px-8 mx-auto max-w-7xl">
 
         <a href="#_" class="relative z-10 flex items-center w-auto text-2xl font-black leading-none text-gray-900 select-none">Wiki.</a>
@@ -44,7 +45,7 @@
         </div>
 
     </div>
-</section>
+</section> -->
 
 <h4 class="px-24 py-6 w-[40%] text-3xl my-6 font-semibold leading-snug">Welcome To Daali</h4>
 <?php require APPROOT . '/views/inc/filter.php'; ?>

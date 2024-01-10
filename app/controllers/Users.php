@@ -44,6 +44,7 @@ class Users extends Controller
 
                 $data['password'] = password_hash($data['password'], PASSWORD_DEFAULT);
                 if ($this->userModel->register($data)) {
+                    redirect('register_success', 'You are registered and can log in');
                     redirect('pages/login');
                 } else {
                     die('something went wrong');
@@ -51,7 +52,6 @@ class Users extends Controller
             } else {
                 $this->view('pages/create', $data);
             }
-
         } else {
             $data = [
                 'img' => '',
@@ -63,20 +63,36 @@ class Users extends Controller
         }
     }
 
-    // public function login()
-    // {
-    //     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 
-    //     } else {
-    //         $data = [
-    //             'email' => '',
-    //             'password' => '',
-    //         ];
+    public function login()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $data = [
+                'email' => trim($_POST['email']),
+                'password' => trim($_POST['password']),
+            ];
+            $loggedUser = $this->userModel->login($data['email'], $data['password']);
+            if ($loggedUser) {
+                $this->createUserSession($loggedUser);
+                $this->view('pages/member');
+            }
+        } else {
+            $data = [
+                'email' => '',
+                'password' => '',
+            ];
 
-    //         $this->view('pages/login', $data);
-    //     }
-    // }
+            $this->view('pages/login');
+        }
+    }
 
-
+    public function createUserSession($user)
+    {
+        $_SESSION['user_id'] = $user->id;
+        $_SESSION['name'] = $user->name;
+        $_SESSION['email'] = $user->email;
+        $_SESSION['img'] = $user->img;
+        redirect('pages/member');
+    }
 }

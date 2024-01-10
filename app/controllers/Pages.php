@@ -14,12 +14,7 @@ class Pages extends Controller
     $this->view('pages/index', $data);
   }
 
-  public function create()
-  {
-
-    $this->view('pages/create');
-  }
-
+  
   public function login()
   {
 
