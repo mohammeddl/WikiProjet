@@ -2,12 +2,18 @@
 class Users extends Controller
 {
     private $userModel;
+    private $userWiki;
     public function __construct()
     {
         $this->userModel = $this->model('User');
+        $this->userWiki = $this->model('Wiki');
     }
 
-
+    public function index()
+    {
+        $this->view('pages/index');
+    }
+    
     public function register()
     {
 
@@ -77,7 +83,7 @@ class Users extends Controller
                 switch ($_SESSION['role']) {
                     case "author":
                         $_SESSION['role'] = 'author';
-                        $this->view('pages/member');
+                        $this->displayWikiUser();
                         exit;
                     case "admin":
                         $_SESSION['role'] = 'admin';
@@ -118,53 +124,10 @@ class Users extends Controller
             return false;
         }
     }
-
-    public function tags()
+    public function displayWikiUser()
     {
-        $tag = $_POST['tagName'];
-        $result = $this->userModel->insertTags($tag);
-
-        $this->view('pages/tags');
+        $wiki = $this->userWiki->getWikis($_SESSION['id']);
+        $this->view('pages/member', $wiki);
     }
 
-
-    public function displayTags()
-    {
-        $tags = $this->userModel->getTags();
-
-        $this->view('pages/tags', $tags);
-    }
-
-
-    public function categorie()
-    {
-        $img = $_POST['img'];
-        $name = $_POST['name'];
-        $this->userModel->insertCategory($name, $img);
-        $this->view('pages/categorie');
-    }
-
-    public function displayCategory()
-    {
-        $category = $this->userModel->getCategory();
-        $this->view('pages/categorie', $category);
-    }
-
-
-    public function wikis(){
-        $iduser = $_SESSION['id'];
-        $img = $_POST['img'];
-        $title = $_POST['title'];
-        $description = $_POST['description'];
-        $date = $_POST['date'];
-
-        $this->userModel->insertWiki($title,$description,$iduser,$date,$img);
-        $this->view('pages/member');    
-        
-    }
-
-    public function displayWikiUser(){
-        $wiki = $this->userModel->getWikis($_SESSION['id']);
-        $this->view('pages/member',$wiki);
-    }
 }
