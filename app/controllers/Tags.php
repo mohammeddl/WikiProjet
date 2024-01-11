@@ -25,24 +25,22 @@ class Tags extends Controller
     }
 
 
-    public function modifyTag()
-    {
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-            $tagId = $_POST['idTag'];
-            $newTagName = $_POST['newTagName']; // Assuming you have a form field for the new tag name
-
-            // Call a method from your model to update the tag
-            $this->userTag->updateTag($tagId, $newTagName);
-        }
-
-        // Redirect to the tags page or wherever you want to go after modification
-        header("Location: /tags");
-    }
-
     public function deleteTag()
     {
         $idTag = $_POST['idTag'];
         $this->userTag->deleteTag($idTag);
         $this->displayTags();
     }
+
+
+    public function modifyTag()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $tagId = $_POST['idTag'];
+            $newTagName = $_POST['newTagName']; 
+            $this->userTag->updateTag($tagId, $newTagName);
+            $this->displayTags();
+        }
+    }
+
 }

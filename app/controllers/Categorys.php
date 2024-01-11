@@ -1,6 +1,7 @@
 <?php
 
-class Categorys extends Controller {
+class Categorys extends Controller
+{
 
 
     private $userCategory;
@@ -15,12 +16,19 @@ class Categorys extends Controller {
         $img = $_POST['img'];
         $name = $_POST['name'];
         $this->userCategory->insertCategory($name, $img);
-        $this->view('pages/categorie');
+        $this->displayCategory();
     }
 
     public function displayCategory()
     {
         $category = $this->userCategory->getCategory();
         $this->view('pages/categorie', $category);
+    }
+
+    public function deleteCategorys($id)
+    {
+
+        $this->userCategory->deleteCategory($id);
+        $this->displayCategory();
     }
 }

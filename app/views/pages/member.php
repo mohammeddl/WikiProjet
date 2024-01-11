@@ -80,7 +80,7 @@ require APPROOT . '/views/inc/navbar.php';
         </div>
     </div>
 
-
+    <script src="<?php echo URLROOT; ?>/js/addWikis.js"></script>
     <?php
     require APPROOT . '/views/inc/linkFooter.php';
     require APPROOT . '/views/inc/footer.php';

@@ -23,4 +23,10 @@ public function getCategory()
     
     return $this->db->resultSet();
 }
+
+public function deleteCategory($idCategory){
+    $this->db->query("DELETE FROM categories WHERE categoryId = :categoryId");
+    $this->db->bind(':categoryId', $idCategory);
+    $this->db->execute();
+}
 }

@@ -38,4 +38,5 @@ public function deleteTag($tagId)
     $this->db->bind(':tagId', $tagId);
     $this->db->execute();
 }
+
 }
