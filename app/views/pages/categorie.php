@@ -28,7 +28,7 @@ require APPROOT . '/views/inc/navadmin.php';
                     <nav aria-label="Sidebar" class="mt-5">
                         <div class="px-2 space-y-1">
 
-                            <a href="<?php echo URLROOT; ?>pages/dashboard" class=" text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md" x-state:on="Current" x-state:off="Default" x-state-description="Current: &quot;bg-gray-100 text-gray-900&quot;, Default: &quot;text-gray-600 hover:bg-gray-50 hover:text-gray-900&quot;">
+                            <a href="<?php echo URLROOT; ?>wikis/displayWikisArchiv" class=" text-gray-900 group flex items-center px-2 py-2 text-base font-medium rounded-md" x-state:on="Current" x-state:off="Default" x-state-description="Current: &quot;bg-gray-100 text-gray-900&quot;, Default: &quot;text-gray-600 hover:bg-gray-50 hover:text-gray-900&quot;">
                                 <svg class="text-gray-400 group-hover:text-gray-500 mr-4 h-6 w-6" xmlns="http://www.w3.org/2000/svg" height="16" width="18" viewBox="0 0 576 512">
                                     <path fill="#727274" d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
                                 </svg>
@@ -81,7 +81,7 @@ require APPROOT . '/views/inc/navadmin.php';
                         <nav class=" flex-1 bg-yellow-400" aria-label="Sidebar">
                             <div class="p-4 ">
 
-                                <a href="<?php echo URLROOT; ?>pages/dashboard" class=" text-gray-600 group flex items-center px-2 py-2 text-sm font-medium rounded-md" x-state:on="Current" x-state:off="Default" x-state-description="Current: &quot;bg-gray-200 text-gray-900&quot;, Default: &quot;text-gray-600 hover:bg-gray-50 hover:text-gray-900&quot;">
+                                <a href="<?php echo URLROOT; ?>wikis/displayWikisArchiv" class=" text-gray-600 group flex items-center px-2 py-2 text-sm font-medium rounded-md" x-state:on="Current" x-state:off="Default" x-state-description="Current: &quot;bg-gray-200 text-gray-900&quot;, Default: &quot;text-gray-600 hover:bg-gray-50 hover:text-gray-900&quot;">
                                     <svg class="text-gray-400 group-hover:text-gray-500 mr-3 h-6 w-6" xmlns="http://www.w3.org/2000/svg" height="16" width="18" viewBox="0 0 576 512"><!--!Font Awesome Free 6.5.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free Copyright 2023 Fonticons, Inc.-->
                                         <path fill="#727274" d="M575.8 255.5c0 18-15 32.1-32 32.1h-32l.7 160.2c0 2.7-.2 5.4-.5 8.1V472c0 22.1-17.9 40-40 40H456c-1.1 0-2.2 0-3.3-.1c-1.4 .1-2.8 .1-4.2 .1H416 392c-22.1 0-40-17.9-40-40V448 384c0-17.7-14.3-32-32-32H256c-17.7 0-32 14.3-32 32v64 24c0 22.1-17.9 40-40 40H160 128.1c-1.5 0-3-.1-4.5-.2c-1.2 .1-2.4 .2-3.6 .2H104c-22.1 0-40-17.9-40-40V360c0-.9 0-1.9 .1-2.8V287.6H32c-18 0-32-14-32-32.1c0-9 3-17 10-24L266.4 8c7-7 15-8 22-8s15 2 21 7L564.8 231.5c8 7 12 15 11 24z" />
                                     </svg>
@@ -171,22 +171,78 @@ require APPROOT . '/views/inc/navadmin.php';
                 <ul role="list" class="mt-3 grid grid-cols-1 gap-5 sm:gap-6 sm:grid-cols-2 lg:grid-cols-4">
                     <?php foreach ($data as $category) { ?>
                         <li class="w-full max-w-xs overflow-hidden bg-white rounded-lg shadow-lg dark:bg-gray-800">
-                            <img class="object-cover w-full h-56" src="<?= URLROOT ?>/img/<?= $category->categoryImg; ?>" alt="avatar">
+                            <img class="object-cover w-full h-56" id="img<?= $category->categoryId ?>" src="<?= URLROOT ?>/img/<?= $category->categoryImg; ?>" alt="avatar">
                             <div class="py-5 text-center">
-                                <p class="block text-xl font-bold text-gray-800 dark:text-white" tabindex="0" role="link"><?= $category->categoryName ?></p>
-                                <form action="">
-                                    <input type="hidden" value="<?= $category->categoryId; ?>">
-                                    <button type="submit" name="modifyTag"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">
-                                            <path fill="#FFD43B" d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z" />
-                                        </svg></button>
-                                        <a href="<?= URLROOT ?>categorys/deleteCategorys/<?= $category->categoryId; ?>"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512">
-                                            <path fill="#FFD43B" d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
-                                        </svg></a>
-                                    </form>
+                                <p class="block text-xl font-bold text-gray-800 dark:text-white" id="name<?= $category->categoryId; ?>"><?= $category->categoryName ?></p>
+                                <input type="hidden" id="category<?= $category->categoryId; ?>" value="<?= $category->categoryId; ?>">
+                                <button onclick="clickHiddenTag(<?= $category->categoryId ?>)"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="16" viewBox="0 0 512 512">
+                                        <path fill="#FFD43B" d="M471.6 21.7c-21.9-21.9-57.3-21.9-79.2 0L362.3 51.7l97.9 97.9 30.1-30.1c21.9-21.9 21.9-57.3 0-79.2L471.6 21.7zm-299.2 220c-6.1 6.1-10.8 13.6-13.5 21.9l-29.6 88.8c-2.9 8.6-.6 18.1 5.8 24.6s15.9 8.7 24.6 5.8l88.8-29.6c8.2-2.7 15.7-7.4 21.9-13.5L437.7 172.3 339.7 74.3 172.4 241.7zM96 64C43 64 0 107 0 160V416c0 53 43 96 96 96H352c53 0 96-43 96-96V320c0-17.7-14.3-32-32-32s-32 14.3-32 32v96c0 17.7-14.3 32-32 32H96c-17.7 0-32-14.3-32-32V160c0-17.7 14.3-32 32-32h96c17.7 0 32-14.3 32-32s-14.3-32-32-32H96z" />
+                                    </svg></button>
+                                <a href="<?= URLROOT ?>categorys/deleteCategorys/<?= $category->categoryId; ?>"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512">
+                                        <path fill="#FFD43B" d="M135.2 17.7L128 32H32C14.3 32 0 46.3 0 64S14.3 96 32 96H416c17.7 0 32-14.3 32-32s-14.3-32-32-32H320l-7.2-14.3C307.4 6.8 296.3 0 284.2 0H163.8c-12.1 0-23.2 6.8-28.6 17.7zM416 128H32L53.2 467c1.6 25.3 22.6 45 47.9 45H346.9c25.3 0 46.3-19.7 47.9-45L416 128z" />
+                                    </svg></a>
                             </div>
                         </li>
                     <?php } ?>
                 </ul>
             </div>
 
-            <?php require APPROOT . '/views/inc/footer.php'; ?>
+
+            <div class="text-center">
+                <div>
+                    <div class="fixed inset-0 z-50 overflow-auto bg-black bg-opacity-50" id="formHidden" style="display: none;">
+                        <div class="modal-content bg-white mx-auto my-8 p-8 w-1/2">
+                            <form action="<?= URLROOT ?>categorys/modifyCategoty" method="POST">
+                                <div class="mb-4">
+                                    <span onclick="hidePopupEdit()" class="float-right cursor-pointer">&times;</span>
+                                    <h2 class="text-2xl font-bold">Modify Category</h2>
+                                </div>
+                                <div>
+                                    <label for="dropzone-file" class="flex flex-col items-center w-full max-w-lg p-5 mx-auto mt-2 text-center bg-white border-2 border-gray-300 border-dashed cursor-pointer dark:bg-gray-900 dark:border-gray-700 rounded-xl">
+                                        <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-500 dark:text-gray-400">
+                                            <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
+                                        </svg>
+                                        <img id="imgPreview" class="object-cover w-full h-56">
+                                        <h2 class="mt-1 font-medium tracking-wide text-gray-700 dark:text-gray-200">img </h2>
+                                        <p class="mt-2 text-xs tracking-wide text-gray-500 dark:text-gray-400">Upload or darg & drop your file SVG, PNG, JPG or GIF. </p>
+                                        <input name="imgCategory" id="img2" type="file" class="" />
+                                    </label>
+                                </div>
+                                <input id="id2" type="hidden" name="idTag" value="">
+
+                                <label class="block text-sm font-medium text-gray-700">Title</label>
+                                <input type="text" id="tagName2" name="newTagName" value="" class="mt-1 p-2 border border-gray-300 rounded-md">
+
+                                <button type="submit" name="modifyTag" class="mt-4 inline-flex bg-yellow-400 items-center px-4 py-2 hover:bg-yellow-600 text-white text-sm font-medium rounded-md">
+                                    modify
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+
+                <script>
+                    function clickHiddenTag(id) {
+                        formHidden = document.getElementById("formHidden");
+                        if (formHidden.style.display === 'none') {
+                            formHidden.style.display = "block";
+                        }
+
+                        let idCategory = document.getElementById('category' + id).value;
+                        let imgSrc = document.getElementById('img' + id).src;
+                        let nameTag = document.getElementById('name' + id).innerText;
+
+                        document.getElementById('id2').value = idCategory;
+                        document.getElementById('imgPreview').src = imgSrc;
+                        document.getElementById('tagName2').value = nameTag;
+                    }
+
+                    function hidePopupEdit() {
+                        formHidden = document.getElementById("formHidden");
+                        if (formHidden.style.display === 'block') {
+                            formHidden.style.display = "none";
+                        }
+                    }
+                </script>
+
+                <?php require APPROOT . '/views/inc/footer.php'; ?>

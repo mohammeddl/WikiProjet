@@ -87,7 +87,8 @@ class Users extends Controller
                         exit;
                     case "admin":
                         $_SESSION['role'] = 'admin';
-                        $this->view('pages/dashboard');
+                        $data = $this->userWiki->getAllWikisNot();
+                        $this->view('pages/dashboard',$data);
                         exit;
                 }
             } else {

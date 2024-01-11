@@ -26,7 +26,7 @@ class Tag
 
 public function updateTag($tagId, $newTagName)
 {
-    $this->db->query("UPDATE tags SET tagName = :newTagName WHERE tagId = :tagId");
+    $this->db->query("UPDATE tags SET tagName = :newTagName WHERE categoryId = :tagId");
     $this->db->bind(':newTagName', $newTagName);
     $this->db->bind(':tagId', $tagId);
     $this->db->execute();

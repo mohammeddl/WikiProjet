@@ -30,5 +30,16 @@ class Wiki
         $this->db->query("SELECT * FROM wikis");
         return $this->db->resultSet();
     }
+    public function getAllWikisNot(){
+        $this->db->query("SELECT * FROM wikis WHERE archiv = 0 ");
+        return $this->db->resultSet();
+    }
+
+    public function archivWiki($idWiki){
+        $this->db->query("UPDATE wikis SET archiv = 1 WHERE wikiId = :idWiki");
+        $this->db->bind(':idWiki', $idWiki);
+        $this->db->execute();
+
+    }
 
 }

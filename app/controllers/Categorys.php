@@ -31,4 +31,15 @@ class Categorys extends Controller
         $this->userCategory->deleteCategory($id);
         $this->displayCategory();
     }
+
+    public function modifyCategoty()
+    {
+        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $categoryId = $_POST['idTag'];
+            $newTagName = $_POST['newTagName']; 
+            $img = $_POST['imgCategory'];
+            $this->userCategory->updateCategoy($categoryId,$newTagName, $img);
+            $this->displayCategory();
+        }
+    }
 }

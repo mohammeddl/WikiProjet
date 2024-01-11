@@ -1,12 +1,13 @@
-<?php 
-class Wikis extends Controller {
-
-private $userWiki;
-
-public function __construct()
+<?php
+class Wikis extends Controller
 {
-    $this->userWiki = $this->model('Wiki');
-}
+
+    private $userWiki;
+
+    public function __construct()
+    {
+        $this->userWiki = $this->model('Wiki');
+    }
 
 
     public function wikis()
@@ -27,8 +28,21 @@ public function __construct()
         $this->view('pages/member', $wiki);
     }
 
-    public function displayAll(){
+    public function displayAll()
+    {
         $wiki = $this->userWiki->getAllWikis();
         $this->view('pages/index', $wiki);
+    }
+
+    public function displayWikisArchiv()
+    {
+        $archiv = $this->userWiki->getAllWikisNot();
+        $this->view('pages/dashboard', $archiv);
+    }
+
+    public function archivWikis($id)
+    {
+        $this->userWiki->archivWiki($id);
+        $this->displayWikisArchiv();
     }
 }

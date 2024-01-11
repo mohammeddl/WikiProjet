@@ -29,4 +29,13 @@ public function deleteCategory($idCategory){
     $this->db->bind(':categoryId', $idCategory);
     $this->db->execute();
 }
+
+public function updateCategoy($categoryId, $newTagName,$categoryImg)
+{
+    $this->db->query("UPDATE categories SET categoryName = :newTagName, categoryImg = :categoryImg WHERE categoryId = :categoryId");
+    $this->db->bind(':categoryId', $categoryId);
+    $this->db->bind(':newTagName', $newTagName);
+    $this->db->bind(':categoryImg', $categoryImg);
+    $this->db->execute();
+}
 }
