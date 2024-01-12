@@ -3,17 +3,21 @@ class Users extends Controller
 {
     private $userModel;
     private $userWiki;
+    private $category;
+    private $tags;
     public function __construct()
     {
         $this->userModel = $this->model('User');
         $this->userWiki = $this->model('Wiki');
+        $this->category = $this->model('Category');
+        $this->tags = $this->model('Tag');
     }
 
     public function index()
     {
         $this->view('pages/index');
     }
-    
+
     public function register()
     {
 
@@ -88,7 +92,7 @@ class Users extends Controller
                     case "admin":
                         $_SESSION['role'] = 'admin';
                         $data = $this->userWiki->getAllWikisNot();
-                        $this->view('pages/dashboard',$data);
+                        $this->view('pages/dashboard', $data);
                         exit;
                 }
             } else {
@@ -128,7 +132,13 @@ class Users extends Controller
     public function displayWikiUser()
     {
         $wiki = $this->userWiki->getWikis($_SESSION['id']);
-        $this->view('pages/member', $wiki);
+        $category = $this->category->getCategory();
+        $tags = $this->tags->getTags();
+        $data = [
+            'wiki' => $wiki,
+            'category' => $category,
+            'tags' => $tags
+        ];
+        $this->view('pages/member', $data);
     }
-
 }

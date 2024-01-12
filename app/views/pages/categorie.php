@@ -102,7 +102,7 @@ require APPROOT . '/views/inc/navadmin.php';
                                     </a>
                             </div>
                         </nav>
-                        <div class="flex-shrink-0 flex border-t border-gray-200 ">
+                        <div class="m-2 border-t border-gray-200 ">
                             <a href="#" class=" w-full group block">
                                 <div>
                                     <img class="inline-block h-9 w-9 rounded-full" src="<?= URLROOT ?>/img/<?= $_SESSION['img']; ?>" alt="profile">
