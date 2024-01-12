@@ -1,7 +1,7 @@
 <?php
 class Wiki
 {
-private $category;
+    private $category;
     private $db;
 
     public function __construct()
@@ -73,5 +73,10 @@ private $category;
         $this->db->execute();
     }
 
-    
+    public function wikisDelete($idWiki)
+    {
+        $this->db->query("DELETE FROM wikis WHERE wikiId = :idWiki");
+        $this->db->bind(':idWiki',$idWiki);
+        $this->db->execute();
+    }
 }

@@ -67,4 +67,10 @@ class Wikis extends Controller
         $this->view('pages/member', $data);
     }
 
+
+    public function wikisDelete($id){
+        $this->userWiki->wikisDelete($id);
+        $this->displayWikiUser();
+    }
+
 }

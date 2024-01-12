@@ -27,7 +27,6 @@ class Categorys extends Controller
 
     public function deleteCategorys($id)
     {
-
         $this->userCategory->deleteCategory($id);
         $this->displayCategory();
     }
