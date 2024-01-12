@@ -21,19 +21,20 @@ require APPROOT . '/views/inc/navbar.php';
     <div class="grid gap-8 lg:grid-cols-3 sm:max-w-sm sm:mx-auto lg:max-w-full">
         <?php foreach ($data['wiki'] as $wiki) { ?>
             <div class="overflow-hidden transition-shadow duration-300 bg-white rounded shadow-sm">
-                <img src="<?= URLROOT ?>/img/<?= $wiki->imgWiki ?>" alt="img" />
+                <img id="img<?= $wiki->wikiId ?>" src="<?= URLROOT ?>/img/<?= $wiki->imgWiki ?>" alt="img" />
                 <div class="p-5 border border-t-0">
                     <p class="mb-3 text-xs font-semibold tracking-wide uppercase">
                         <a href="/" class="transition-colors duration-200 text-blue-gray-900 hover:text-deep-purple-accent-700" aria-label="Category" title="traveling">traveling</a>
-                        <span class="text-gray-600">— <?= $wiki->wikiDate ?></span>
+                        <span class="text-gray-600" id="date<?= $wiki->wikiId ?>">— <?= $wiki->wikiDate ?></span>
                     </p>
-                    <a href="/" aria-label="Category" title="Visit the East" class="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700">Visit the East</a>
-                    <p class="mb-2 text-gray-700">
+                    <p id="title<?= $wiki->wikiId ?>" class="inline-block mb-3 text-2xl font-bold leading-5 transition-colors duration-200 hover:text-deep-purple-accent-700"><?= $wiki->title ?></p>
+                    <p class="mb-2 text-gray-700" id="content<?= $wiki->wikiId ?>">
                         <?= $wiki->content ?>
                     </p>
                     <div class="flex justify-between">
                         <a href="/" aria-label="" class="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800">Learn more</a>
                         <div>
+                            <input type="hidden" value="<?= $wiki->wikiId ?>" id="wikiId<?= $wiki->wikiId ?>">
                             <a href="<?= URLROOT ?>wikis/wikisDelete/<?= $wiki->wikiId ?>" method="post" class="w-8 h-8 bg-white inline-flex items-center justify-center text-gray-400 rounded-full bg-transparent hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500">
                                 <input type="hidden" name="idWiki" id="tag<?= $wiki->wikiId ?>" value="<?= $wiki->wikiId ?>">
                                 <button type="submit" name="wikiDelete"><svg xmlns="http://www.w3.org/2000/svg" height="16" width="14" viewBox="0 0 448 512">
@@ -117,30 +118,31 @@ require APPROOT . '/views/inc/navbar.php';
         <div>
             <div class="fixed inset-0 z-50 overflow-auto bg-black bg-opacity-50" id="fromHiddenModify" style="display: none;">
                 <div class="modal-content bg-white mx-auto my-8 p-8 w-1/2">
-                    <form action="<?= URLROOT ?>Wikis/addWiki" method="POST">
+                    <form action="<?= URLROOT ?>Wikis/modifyWikis" method="POST">
                         <div class="mb-4">
                             <span onclick="PopupEdit()" class="float-right cursor-pointer">&times;</span>
                             <h2 class="text-2xl font-bold">modify Wiki</h2>
                         </div>
-                        <input type="text" id="id" type="hidden" name="id">
+                        <input  id="wikiID" type="hidden" value="" name="idWiki">
                         <div>
                             <label for="dropzone-file" class="flex flex-col items-center w-full max-w-lg p-5 mx-auto mt-2 text-center bg-white border-2 border-gray-300 border-dashed cursor-pointer dark:bg-gray-900 dark:border-gray-700 rounded-xl">
                                 <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke-width="1.5" stroke="currentColor" class="w-8 h-8 text-gray-500 dark:text-gray-400">
                                     <path stroke-linecap="round" stroke-linejoin="round" d="M12 16.5V9.75m0 0l3 3m-3-3l-3 3M6.75 19.5a4.5 4.5 0 01-1.41-8.775 5.25 5.25 0 0110.233-2.33 3 3 0 013.758 3.848A3.752 3.752 0 0118 19.5H6.75z" />
                                 </svg>
+                                <img id="imgPreview" alt="">
                                 <h2 class="mt-1 font-medium tracking-wide text-gray-700 dark:text-gray-200">img </h2>
                                 <p class="mt-2 text-xs tracking-wide text-gray-500 dark:text-gray-400">Upload or darg & drop your file SVG, PNG, JPG or GIF. </p>
                                 <input id="dropzone-file" name="img" type="file" class="hidden" />
                             </label>
                         </div>
                         <label class="block text-sm font-medium text-gray-700">Title</label>
-                        <input type="text" id="wikiName" name="title" class="mt-1 p-2 border border-gray-300 rounded-md">
+                        <input type="text" id="wikiName2" value="" name="title" class="mt-1 p-2 border border-gray-300 rounded-md">
 
                         <label class="block mt-4 text-sm font-medium text-gray-700">Description</label>
-                        <textarea id="Description" name="description" rows="4" class="mt-1 p-2 border border-gray-300 rounded-md"></textarea>
+                        <textarea id="Description2" value="" name="description" rows="4" class="mt-1 p-2 border border-gray-300 rounded-md"></textarea>
 
                         <label for="date" class="block mt-4 text-sm font-medium text-gray-700">Date</label>
-                        <input type="date" id="start_date" name="date" class="mt-1 p-2 border border-gray-300 rounded-md">
+                        <input type="date" id="date2" name="date" value="" class="mt-1 p-2 border border-gray-300 rounded-md">
 
                         <div class="w-[100%] flex items-center ">
                             <div>
@@ -152,7 +154,7 @@ require APPROOT . '/views/inc/navbar.php';
                                 </select>
                             </div>
 
-                            <select name="category" id="countries" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
+                            <select name="category" id="category2" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500">
                                 <option selected>Choose a category</option>
                                 <?php
                                 foreach ($data['category'] as $category) { ?>
@@ -161,7 +163,7 @@ require APPROOT . '/views/inc/navbar.php';
                             </select>
                         </div>
 
-                        <button type="submit" name="submitWiki" class="mt-4 inline-flex bg-yellow-400 items-center px-4 py-2 hover:bg-yellow-600 text-white text-sm font-medium rounded-md">
+                        <button type="submit" class="mt-4 inline-flex bg-yellow-400 items-center px-4 py-2 hover:bg-yellow-600 text-white text-sm font-medium rounded-md">
                             modify Wiki
                         </button>
                     </form>
@@ -171,22 +173,23 @@ require APPROOT . '/views/inc/navbar.php';
 
 
 
-
-
         <script>
             function clickHiddenWiki(id) {
                 formHidden = document.getElementById("fromHiddenModify");
                 if (formHidden.style.display === 'none') {
                     formHidden.style.display = "block";
                 }
-
-                let idCategory = document.getElementById('category' + id).value;
+                let idWiki = document.getElementById('wikiId' + id).value;
                 let imgSrc = document.getElementById('img' + id).src;
-                let nameTag = document.getElementById('name' + id).innerText;
+                let title = document.getElementById('title' + id).innerText;
+                let content = document.getElementById('content' + id).innerText;
+                let date = document.getElementById('date' + id).innerText;
 
-                document.getElementById('id2').value = idCategory;
+                document.getElementById('wikiID').value = idWiki;
                 document.getElementById('imgPreview').src = imgSrc;
-                document.getElementById('tagName2').value = nameTag;
+                document.getElementById('wikiName2').value = title;
+                document.getElementById('Description2').value = content;
+                document.getElementById('date2').value = date;
             }
 
             function PopupEdit() {
@@ -196,6 +199,7 @@ require APPROOT . '/views/inc/navbar.php';
                 }
             }
         </script>
+
 
         <script src="<?php echo URLROOT; ?>/js/addWikis.js"></script>
         <?php
